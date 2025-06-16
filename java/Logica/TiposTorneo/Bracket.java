@@ -1,4 +1,8 @@
 package Logica.TiposTorneo;
 
-public class Bracket {
+public class Bracket extends Torneo{
+
+    public Bracket(int x){
+        super(x);
+    }
 }
