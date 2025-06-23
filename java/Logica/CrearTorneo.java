@@ -20,10 +20,13 @@ public class CrearTorneo {
                 System.out.println("Nuevo torneo creado, Liguilla");
                 break;
             case (3):
-                torneo = new Suizo(numParticipantes);
-                System.out.println("Nuevo torneo creado, Suizo");
+                torneo = new DobleEliminacion(numParticipantes);
+                System.out.println("Nuevo torneo creado, Liguilla");
                 break;
         }
     }
 
+    public Torneo getTorneo() {
+        return torneo;
+    }
 }
