@@ -1,14 +1,17 @@
 package Logica.Participantes;
 
 public abstract class Participante {
-    private int ID;
-    public Participante(int x){
-        this.ID = x;
+    protected int ID;
+    protected String nombre;
+    public Participante(String nombre, int id){
+        this.ID = id;
+        this.nombre = nombre;
     }
 
     public int getID() {
         return ID;
     }
+
 }
 
 
