@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Genera un torneo ordenado por puntos, quien tenga mas puntos gana.
  */
 public class Liguilla extends Torneo{
-    protected ArrayList<Participante> participantes;
+    private ArrayList<Participante> participantes;
 
     public Liguilla(int x){
         super(x);

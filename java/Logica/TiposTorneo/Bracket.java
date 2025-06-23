@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Bracket extends Torneo{
     private int numRondas;
-    public ArrayList<Participante> participantes;
+    private ArrayList<Participante> participantes;
 
 
     public Bracket(int x){
