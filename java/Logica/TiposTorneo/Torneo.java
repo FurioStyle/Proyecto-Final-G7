@@ -4,7 +4,6 @@ public abstract class Torneo {
     private int participantes;
     public Torneo(int x){
         this.participantes = x;
-
     }
     public abstract void addPersona(String nombre, int id);
 
