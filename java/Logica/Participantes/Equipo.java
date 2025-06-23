@@ -1,8 +1,13 @@
 package Logica.Participantes;
 
 public class Equipo extends Participante{
-    private String nombre;
+
     public Equipo(String n, int x){
-        super(x);
+        super(n,x);
+    }
+
+    @Override
+    public String toString(){
+        return super.nombre;
     }
 }
