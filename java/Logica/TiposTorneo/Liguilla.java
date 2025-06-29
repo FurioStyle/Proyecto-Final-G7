@@ -7,7 +7,7 @@ import Logica.Participantes.Persona;
 import java.util.ArrayList;
 
 /**
- * Genera un torneo ordenado por puntos, quien tenga mas puntos gana.
+ * Genera un torneo ordenado por puntos, quien tenga más puntos gana.
  */
 public class Liguilla extends Torneo{
     private ArrayList<Participante> participantes;
