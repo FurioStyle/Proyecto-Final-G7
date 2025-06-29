@@ -1,5 +1,5 @@
 package Logica;
-
+import GUI.*;
 import Logica.TiposTorneo.Torneo;
 
 public class Main {
@@ -16,5 +16,7 @@ public class Main {
         t.addPersona("Alice",6);
 
         System.out.println(t.generarTorneo());
+
+        VentanaPrincipal p = new VentanaPrincipal();
     }
 }
