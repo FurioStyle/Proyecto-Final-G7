@@ -12,16 +12,16 @@ public class CrearTorneo {
 
         switch (tipoTorneo){
             case (1):
-                torneo = new Bracket(numParticipantes);
+                torneo = new Bracket(numParticipantes, "Bracket Prueba");
                 System.out.println("Nuevo torneo creado, Bracket");
                 break;
             case (2):
-                torneo = new Liguilla(numParticipantes);
+                torneo = new Liguilla(numParticipantes, "Liguilla Prueba");
                 System.out.println("Nuevo torneo creado, Liguilla");
                 break;
             case (3):
-                torneo = new DobleEliminacion(numParticipantes);
-                System.out.println("Nuevo torneo creado, Liguilla");
+                torneo = new DobleEliminacion(numParticipantes, "Doble Eliminacion Prueba");
+                System.out.println("Nuevo torneo creado, DobleEliminacion");
                 break;
         }
     }
