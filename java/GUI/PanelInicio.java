@@ -3,7 +3,7 @@ package GUI;
 import javax.swing.*;
 
 public class PanelInicio extends JPanel {
-    public PanelInicio(VentanaPrincipal frame) {
+    public PanelInicio(VentanaPrincipal ventana) {
         setLayout(null);
 
         JLabel titulo = new JLabel("Seleccione su acción", SwingConstants.CENTER);
@@ -26,7 +26,7 @@ public class PanelInicio extends JPanel {
         add(admin);
         add(observador);
 
-        admin.addActionListener(e -> frame.mostrarPanel("admin"));
-        observador.addActionListener(e -> frame.mostrarPanel("observador"));
+        admin.addActionListener(e -> ventana.mostrarPanel("admin"));
+        observador.addActionListener(e -> ventana.mostrarPanel("observador"));
     }
 }
