@@ -11,10 +11,14 @@ import java.util.ArrayList;
  */
 public class Liguilla extends Torneo{
     private ArrayList<Participante> participantes;
+    private String nombre;
+    private String status;
 
-    public Liguilla(int x){
+    public Liguilla(int x, String n){
         super(x);
+        this.nombre = n;
         this.participantes = new ArrayList<>();
+        this.status = "En curso";
     }
 
     @Override

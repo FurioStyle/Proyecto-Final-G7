@@ -12,10 +12,14 @@ import java.util.ArrayList;
  */
 public class DobleEliminacion extends Torneo{
     private ArrayList<Participante> participantes;
+    private String nombre;
+    private String status;
 
-    public DobleEliminacion(int x){
+    public DobleEliminacion(int x, String n){
         super(x);
+        this.nombre = n;
         this.participantes = new ArrayList<>();
+        this.status = "En curso";
     }
 
     @Override

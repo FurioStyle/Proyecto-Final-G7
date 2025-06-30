@@ -13,13 +13,17 @@ import java.util.ArrayList;
 
 public class Bracket extends Torneo{
     private int numRondas;
+    private String nombre;
+    private String status;
     private ArrayList<Participante> participantes;
 
 
-    public Bracket(int x){
+    public Bracket(int x, String n){
         super(x);
+        this.nombre = n;
         this.numRondas = x/2;
         this.participantes = new ArrayList<>();
+        this.status = "En curso";
     }
     @Override
     public void addPersona(String nombre, int id){
