@@ -11,14 +11,12 @@ import java.util.ArrayList;
  */
 public class Liguilla extends Torneo{
     private ArrayList<Participante> participantes;
-    private String nombre;
-    private String status;
+    int numParticipantes;
 
     public Liguilla(int x, String n){
-        super(x);
-        this.nombre = n;
+        super(n);
         this.participantes = new ArrayList<>();
-        this.status = "En curso";
+        this.numParticipantes = x;
     }
 
     @Override
@@ -32,8 +30,4 @@ public class Liguilla extends Torneo{
         this.participantes.add(p);
     }
 
-    @Override
-    public String generarTorneo() {
-        return "";
-    }
 }

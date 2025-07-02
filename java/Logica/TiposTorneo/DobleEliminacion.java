@@ -12,14 +12,10 @@ import java.util.ArrayList;
  */
 public class DobleEliminacion extends Torneo{
     private ArrayList<Participante> participantes;
-    private String nombre;
-    private String status;
 
     public DobleEliminacion(int x, String n){
-        super(x);
-        this.nombre = n;
+        super(n);
         this.participantes = new ArrayList<>();
-        this.status = "En curso";
     }
 
     @Override
@@ -31,10 +27,5 @@ public class DobleEliminacion extends Torneo{
     public void addEquipo(String nombre, int id){
         Equipo p = new Equipo(nombre,id);
         this.participantes.add(p);
-    }
-
-    @Override
-    public String generarTorneo() {
-        return "";
     }
 }

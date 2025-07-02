@@ -1,16 +1,28 @@
 package Logica.TiposTorneo;
 
 public abstract class Torneo {
-    private int participantes;
-    public Torneo(int x){
-        this.participantes = x;
+    protected String nombre;
+    protected String status;
+
+    public Torneo(String n){
+        this.status = "En Curso";
+        this.nombre = n;
     }
+
     public abstract void addPersona(String nombre, int id);
 
     public abstract void addEquipo(String nombre, int id);
 
-    public int getNumParticipantes(){
-        return participantes;
+    public String getNombre(){
+        return nombre;
     }
-    public abstract String generarTorneo();
+
+    public String getStatus(){
+        return status;
+    }
+
+    @Override
+    public String toString() {
+        return nombre + " " + "\"" + status + "\"";
+    }
 }
