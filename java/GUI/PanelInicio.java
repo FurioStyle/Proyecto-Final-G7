@@ -18,15 +18,16 @@ public class PanelInicio extends JPanel {
         int y = 220;
 
         JButton admin = new JButton("Administrador");
+        admin.addActionListener(e -> ventana.mostrarPanel("admin"));
+
         JButton observador = new JButton("Observador");
+        observador.addActionListener(e -> ventana.mostrarPanel("observador"));
 
         admin.setBounds(startX, y, buttonWidth, buttonHeight);
+
         observador.setBounds(startX + buttonWidth + spacing, y, buttonWidth, buttonHeight);
 
         add(admin);
         add(observador);
-
-        admin.addActionListener(e -> ventana.mostrarPanel("admin"));
-        observador.addActionListener(e -> ventana.mostrarPanel("observador"));
     }
 }
