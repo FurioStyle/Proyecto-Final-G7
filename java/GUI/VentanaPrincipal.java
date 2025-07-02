@@ -4,13 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * decidi implementar singleton en la ventana principal para que no se creen distintas
+ * Decidí implementar singleton en la ventana principal para que no se creen distintas
  * instancias de la misma ventana
  */
 public class VentanaPrincipal extends JFrame {
     private static VentanaPrincipal instancia; // Uso de Singleton
     private CardLayout cardLayout;
-    private JPanel mainPanel;
+    private JPanel pPrincipal;
 
     private VentanaPrincipal() {
         setTitle("Administrador de Torneos");
@@ -18,21 +18,18 @@ public class VentanaPrincipal extends JFrame {
         setSize(700, 700);
         setLocationRelativeTo(null);
 
-        // Inicializar CardLayout y panel contenedor
         cardLayout = new CardLayout();
-        mainPanel = new JPanel(cardLayout);
+        pPrincipal = new JPanel(cardLayout);
 
-        // Crear los tres paneles
         PanelInicio panelInicio = new PanelInicio(this);
         PanelAdmin panelAdmin = new PanelAdmin(this);
         PanelObservador panelObservador = new PanelObservador(this);
 
-        // Agregar los paneles al CardLayout
-        mainPanel.add(panelInicio, "inicio");
-        mainPanel.add(panelAdmin, "admin");
-        mainPanel.add(panelObservador, "observador");
+        pPrincipal.add(panelInicio, "inicio");
+        pPrincipal.add(panelAdmin, "admin");
+        pPrincipal.add(panelObservador, "observador");
 
-        add(mainPanel);
+        add(pPrincipal);
         setVisible(true);
     }
         // Singleton
@@ -45,6 +42,6 @@ public class VentanaPrincipal extends JFrame {
 
     // Cambiar de panel
     public void mostrarPanel(String nombre) {
-        cardLayout.show(mainPanel, nombre);
+        cardLayout.show(pPrincipal, nombre);
     }
 }
