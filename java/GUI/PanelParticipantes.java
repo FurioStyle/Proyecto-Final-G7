@@ -1,4 +1,4 @@
-package resources;
+package GUI;
 
 public class PanelParticipantes {
 }
