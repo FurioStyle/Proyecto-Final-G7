@@ -23,7 +23,7 @@ public class VentanaPrincipal extends JFrame {
 
         PanelInicio panelInicio = new PanelInicio(this);
         PanelAdmin panelAdmin = new PanelAdmin(this);
-        PanelObservador panelObservador = new PanelObservador(this);
+        PanelObservador panelObservador = new PanelObservador(this, panelAdmin);
 
         pPrincipal.add(panelInicio, "inicio");
         pPrincipal.add(panelAdmin, "admin");
