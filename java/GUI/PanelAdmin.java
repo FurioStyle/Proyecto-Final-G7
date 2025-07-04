@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class PanelAdmin extends JPanel {
     private JButton bCrear;
-    private JButton bActualizar;
+    private JButton bEditar;
     private JButton bVolver;
     private ArrayList<Torneo> enCurso;
     private ArrayList<Torneo> finalizados;
@@ -34,14 +34,14 @@ public class PanelAdmin extends JPanel {
         panelBotones.setLayout(new BoxLayout(panelBotones, BoxLayout.Y_AXIS));
 
         bCrear = new JButton("Crear");
-        bActualizar = new JButton("Actualizar");
+        bEditar = new JButton("Editar");
         bVolver = new JButton("Volver");
 
         bCrear.addActionListener(e ->
             mostrarDialogoCreacion()
         );
 
-        bActualizar.addActionListener(e -> {});
+        bEditar.addActionListener(e -> {});
 
         bVolver.addActionListener(e ->
             ventana.mostrarPanel("inicio")
@@ -50,7 +50,7 @@ public class PanelAdmin extends JPanel {
         panelBotones.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         panelBotones.add(bCrear);
         panelBotones.add(Box.createVerticalStrut(10));
-        panelBotones.add(bActualizar);
+        panelBotones.add(bEditar);
         panelBotones.add(Box.createVerticalStrut(10));
         panelBotones.add(bVolver);
         panelBotones.add(Box.createVerticalStrut(10));
@@ -137,6 +137,14 @@ public class PanelAdmin extends JPanel {
         dialog.pack();
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
+    }
+    
+    public ArrayList<Torneo> getEnCurso(){
+        return enCurso;
+    }
+
+    public ArrayList<Torneo> getFinalizados(){
+        return finalizados;
     }
 }
 
