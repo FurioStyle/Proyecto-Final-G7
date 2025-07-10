@@ -7,27 +7,25 @@ import Logica.Participantes.Persona;
 import java.util.ArrayList;
 
 /**
- * Genera un torneo de Brackets 1vs1 al azar
+ * Genera un torneo con la mecanica doble eliminacion, donde existen dos brackets, el upper bracket, y
+ * el lower bracket, para que finalmente los ganadores de ambos brackets se enfrenten en la final.
  */
-
-
-public class Bracket extends Torneo{
+public class DobleEliminacion extends Torneo{
     private ArrayList<Participante> participantes;
-    private int numParticipantes;
 
-    public Bracket(int x, String n){
+    public DobleEliminacion(int x, String n){
         super(n);
-        this.numParticipantes = x;
         this.participantes = new ArrayList<>();
     }
+
     @Override
     public void addPersona(String nombre, int id){
         Participante p = new Persona(nombre,id);
-        participantes.add(p);
+        this.participantes.add(p);
     }
     @Override
     public void addEquipo(String nombre, int id){
         Equipo p = new Equipo(nombre,id);
-        participantes.add(p);
+        this.participantes.add(p);
     }
 }
