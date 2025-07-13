@@ -18,10 +18,6 @@ public class CrearTorneo {
                 System.out.println("Nuevo torneo creado, Bracket " + nombre);
                 break;
             case (2):
-                torneo = new Liguilla(numParticipantes, nombre);
-                System.out.println("Nuevo torneo creado, Liguilla " + nombre);
-                break;
-            case (3):
                 torneo = new DobleEliminacion(numParticipantes, nombre);
                 System.out.println("Nuevo torneo creado, DobleEliminacion " + nombre);
                 break;
