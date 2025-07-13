@@ -2,7 +2,7 @@ package Logica.Participantes;
 
 public class Equipo extends Participante{
 
-    public Equipo(String n, int x){
+    public Equipo(String n, String x){
         super(n,x);
     }
 
