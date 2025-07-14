@@ -1,9 +1,12 @@
 package GUI;
 
+import Logica.Participantes.Participante;
+import Logica.Participantes.Persona;
 import Logica.TiposTorneo.Torneo;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class PanelObservador extends JPanel {
     private JButton bVer;
@@ -38,8 +41,14 @@ public class PanelObservador extends JPanel {
 
         bVer.addActionListener(e -> {
             Torneo seleccionado = listaEnCurso.getSelectedValue();
+            if (seleccionado == null) {
+                seleccionado = listaFinalizados.getSelectedValue();
+            }
+
             if (seleccionado != null) {
-                JOptionPane.showMessageDialog(this, "Seleccionaste: " + seleccionado.getNombre());
+                mostrarEnfrentamientos(seleccionado);
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecciona un torneo en curso o finalizado", "Aviso", JOptionPane.WARNING_MESSAGE);
             }
         });
 
@@ -84,6 +93,84 @@ public class PanelObservador extends JPanel {
         modeloFinalizados.clear();
         for (Torneo t : panelAdmin.getFinalizados()) {
             modeloFinalizados.addElement(t);
+        }
+    }
+    private void mostrarEnfrentamientos(Torneo torneo) {
+        JFrame ventana = new JFrame("Enfrentamientos del Torneo");
+        ventana.setSize(800, 600);
+        ventana.setLocationRelativeTo(null);
+
+        JPanel panelPrincipal = new JPanel();
+        panelPrincipal.setLayout(new BoxLayout(panelPrincipal, BoxLayout.X_AXIS));
+
+        ArrayList<Participante> participantes = torneo.getParticipantes();
+        int total = participantes.size();
+
+        int inicio = 0;
+        int rondaSize = calcularTamañoRondaInicial(total);
+        int numRonda = 1;
+
+        while (rondaSize >= 2 && inicio + rondaSize <= total) {
+            ArrayList<Participante> ronda = new ArrayList<>(participantes.subList(inicio, inicio + rondaSize));
+
+            JPanel panelRonda = new JPanel();
+            panelRonda.setLayout(new BoxLayout(panelRonda, BoxLayout.Y_AXIS));
+            panelRonda.setBorder(BorderFactory.createTitledBorder("Ronda " + numRonda));
+
+            for (int i = 0; i < rondaSize; i += 2) {
+                Participante p1 = getParticipanteSegura(ronda, i);
+                Participante p2 = getParticipanteSegura(ronda, i + 1);
+                JPanel enfrentamiento = crearEnfrentamiento(p1, p2);
+                panelRonda.add(enfrentamiento);
+                panelRonda.add(Box.createVerticalStrut(10));
+            }
+
+            panelPrincipal.add(panelRonda);
+            panelPrincipal.add(Box.createHorizontalStrut(20));
+
+            inicio += rondaSize;
+            rondaSize /= 2;
+            numRonda++;
+        }
+
+        JScrollPane scroll = new JScrollPane(panelPrincipal);
+        scroll.getHorizontalScrollBar().setUnitIncrement(16);
+        ventana.add(scroll);
+        ventana.setVisible(true);
+    }
+
+    private int calcularTamañoRondaInicial(int total) {
+        int size = 1;
+        while (size * 2 <= total) {
+            size *= 2;
+        }
+        return size;
+    }
+
+
+    private JPanel crearEnfrentamiento(Participante p1, Participante p2) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(2, 1));
+        panel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        panel.setMaximumSize(new Dimension(200, 50));
+
+        String nombre1 = (p1 == null || p1.getNombre() == null || p1.getNombre().isBlank()) ? "-" : p1.getNombre();
+        String nombre2 = (p2 == null || p2.getNombre() == null || p2.getNombre().isBlank()) ? "-" : p2.getNombre();
+
+        JLabel label1 = new JLabel(nombre1, SwingConstants.CENTER);
+        JLabel label2 = new JLabel(nombre2, SwingConstants.CENTER);
+
+        panel.add(label1);
+        panel.add(label2);
+
+        return panel;
+    }
+
+    private Participante getParticipanteSegura(ArrayList<Participante> lista, int index) {
+        if (index < lista.size()) {
+            return lista.get(index);
+        } else {
+            return new Persona("-", "0");
         }
     }
 }
