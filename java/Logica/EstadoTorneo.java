@@ -1,4 +1,4 @@
 package Logica;
 
-public class EstadoTorneo {
+public class EstadoTorneo
 }
