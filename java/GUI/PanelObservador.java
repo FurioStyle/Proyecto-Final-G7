@@ -117,9 +117,10 @@ public class PanelObservador extends JPanel {
             panelRonda.setLayout(new BoxLayout(panelRonda, BoxLayout.Y_AXIS));
             panelRonda.setBorder(BorderFactory.createTitledBorder("Ronda " + numRonda));
 
-            for (int i = 0; i < rondaSize; i += 2) {
+            for (int i = 0; i < ronda.size(); i += 2) {
                 Participante p1 = getParticipanteSegura(ronda, i);
-                Participante p2 = getParticipanteSegura(ronda, i + 1);
+                Participante p2 = (i + 1 < ronda.size()) ? ronda.get(i + 1) : null;
+
                 JPanel enfrentamiento = crearEnfrentamiento(p1, p2);
                 panelRonda.add(enfrentamiento);
                 panelRonda.add(Box.createVerticalStrut(10));
@@ -131,6 +132,22 @@ public class PanelObservador extends JPanel {
             inicio += rondaSize;
             rondaSize /= 2;
             numRonda++;
+        }
+
+        if (inicio < total) {
+            Participante ganador = participantes.get(total - 1);
+            JPanel panelGanador = new JPanel();
+            panelGanador.setLayout(new GridLayout(2, 1));
+            panelGanador.setBorder(BorderFactory.createTitledBorder("Ganador"));
+            panelGanador.setMaximumSize(new Dimension(200, 60));  // Tamaño similar a los enfrentamientos
+
+            JLabel labelGanador = new JLabel(ganador.getNombre(), SwingConstants.CENTER);
+            labelGanador.setFont(new Font("Arial", Font.PLAIN, 12));
+
+            panelGanador.add(labelGanador);
+
+            panelPrincipal.add(Box.createHorizontalStrut(20));
+            panelPrincipal.add(panelGanador);
         }
 
         JScrollPane scroll = new JScrollPane(panelPrincipal);
