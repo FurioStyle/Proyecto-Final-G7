@@ -11,6 +11,7 @@ public class VentanaPrincipal extends JFrame {
     private static VentanaPrincipal instancia; // Uso de Singleton
     private CardLayout cardLayout;
     private JPanel pPrincipal;
+    private PanelObservador panelObservador;
 
     private VentanaPrincipal() {
         setTitle("Administrador de Torneos");
@@ -23,7 +24,7 @@ public class VentanaPrincipal extends JFrame {
 
         PanelInicio panelInicio = new PanelInicio(this);
         PanelAdmin panelAdmin = new PanelAdmin(this);
-        PanelObservador panelObservador = new PanelObservador(this, panelAdmin);
+        panelObservador = new PanelObservador(this, panelAdmin);
 
         pPrincipal.add(panelInicio, "inicio");
         pPrincipal.add(panelAdmin, "admin");
@@ -43,5 +44,9 @@ public class VentanaPrincipal extends JFrame {
     // Cambiar de panel
     public void mostrarPanel(String nombre) {
         cardLayout.show(pPrincipal, nombre);
+    }
+
+    public void actualizarListas(){
+        panelObservador.actualizarListas();
     }
 }
