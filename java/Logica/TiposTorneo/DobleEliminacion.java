@@ -16,6 +16,7 @@ public class DobleEliminacion extends Torneo{
     private ArrayList<Participante> upperBracket;
     private ArrayList<Participante> lowerBracket;
     private int numParticipantes;
+    private int ronda = 0;
 
     public DobleEliminacion(int x, String n){
         super(n);
@@ -55,5 +56,15 @@ public class DobleEliminacion extends Torneo{
     @Override
     public void pasarRondas(ArrayList<Participante> ganadores){
         pActivos = new ArrayList<>(ganadores);
+    }
+
+    @Override
+    public int getRonda() {
+        return ronda;
+    }
+
+    @Override
+    public void setRonda(int x) {
+        this.ronda = x;
     }
 }

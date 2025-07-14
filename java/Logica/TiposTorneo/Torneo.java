@@ -26,7 +26,7 @@ public abstract class Torneo {
     }
 
     public void setStatus(){
-        status = "finalizado";
+        status = "Finalizado";
     }
 
     public abstract int getNumParticipantes();
@@ -40,4 +40,8 @@ public abstract class Torneo {
     public abstract ArrayList<Participante> getPActivos();
 
     public abstract void pasarRondas(ArrayList<Participante> ganadores);
+
+    public abstract int getRonda();
+
+    public abstract void setRonda(int x);
 }

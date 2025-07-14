@@ -15,6 +15,7 @@ public class Bracket extends Torneo{
     public ArrayList<Participante> participantes;
     public ArrayList<Participante> pActivos;
     private int numParticipantes;
+    private int ronda = 0;
 
     public Bracket(int x, String n){
         super(n);
@@ -46,6 +47,16 @@ public class Bracket extends Torneo{
     }
 
     @Override
+    public int getRonda() {
+        return ronda;
+    }
+
+    @Override
+    public void setRonda(int x) {
+        this.ronda = x;
+    }
+
+    @Override
     public ArrayList<Participante> getParticipantes(){
         return participantes;
     }
@@ -54,4 +65,5 @@ public class Bracket extends Torneo{
     public ArrayList<Participante> getPActivos() {
         return pActivos;
     }
+
 }
