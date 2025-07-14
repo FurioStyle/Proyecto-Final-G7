@@ -19,15 +19,16 @@ public class PanelAdmin extends JPanel {
     private DefaultListModel<Torneo> modeloFinalizados;
 
     private Torneo seleccionado;
+    private VentanaPrincipal ventana;
 
     private JList<Torneo> listaEnCurso;
     private JList<Torneo> listaFinalizados;
 
-    public PanelAdmin(VentanaPrincipal ventana) {
+    public PanelAdmin(VentanaPrincipal v) {
+        this.ventana = v;
         setLayout(new BorderLayout());
         enCurso = new ArrayList<>();
         finalizados = new ArrayList<>();
-
         modeloEnCurso = new DefaultListModel<>();
         modeloFinalizados = new DefaultListModel<>();
 
@@ -56,7 +57,9 @@ public class PanelAdmin extends JPanel {
         bAñadir.addActionListener(e -> {
                 int np = seleccionado.getNumParticipantes();
                     if (np > seleccionado.getParticipantes().size()) {
-                        mostrarDialogoAñadir();
+                        if (seleccionado != null) {
+                            mostrarDialogoAñadir();
+                        }
                     }
                     else{
                         System.out.println("Torneo lleno");
@@ -302,7 +305,6 @@ public class PanelAdmin extends JPanel {
         cont.add(btnAceptar);
 
         btnAceptar.addActionListener(e -> {
-            // Validar selección completa
             for (ButtonGroup g : grupos) {
                 if (g.getSelection() == null) {
                     JOptionPane.showMessageDialog(dialog, "Debes seleccionar un ganador para cada enfrentamiento.", "Error", JOptionPane.WARNING_MESSAGE);
@@ -321,7 +323,10 @@ public class PanelAdmin extends JPanel {
 
                 Participante ganador = nombreSeleccionado.equals(p1.getNombre()) ? p1 : p2;
                 ganadores.add(ganador);
+
             }
+
+            seleccionado.getParticipantes().addAll(ganadores);
             seleccionado.pasarRondas(ganadores);
             if (seleccionado.getPActivos().size() == 1) {
                 seleccionado.setStatus();
@@ -358,6 +363,7 @@ public class PanelAdmin extends JPanel {
     public void actualizarListas() {
         modeloEnCurso.clear();
         modeloFinalizados.clear();
+        ventana.actualizarListas();
 
         for (Torneo t : enCurso) {
             modeloEnCurso.addElement(t);
