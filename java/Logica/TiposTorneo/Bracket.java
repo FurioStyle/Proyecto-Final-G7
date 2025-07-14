@@ -30,4 +30,7 @@ public class Bracket extends Torneo{
         Equipo p = new Equipo(nombre,id);
         participantes.add(p);
     }
+    public ArrayList<Participante> getParticipantes() {
+        return participantes;
+    }
 }
